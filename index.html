@@ -8,12 +8,16 @@
 </head>
 <body>
     <h1>Resultats elections présidentielles</h1>
+    <div style="display:flex; justify-content: space-between;">
+
     
-    <div id="canvas">
+    <div id="canvas" style="display:grid">
        
     </div>
-   
+   <div id="resultat" >
 
+   </div>
+</div>
     <script>
     
      
@@ -287,11 +291,11 @@
                         let ctx = canvas.getContext('2d');
                         //ctx.fillRect(0, 0,sort[i]*100, sort[i]*100);
                         ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
-                        ctx.fillRect(10, 10,sort[i].pourcentage*100, sort[i].pourcentage*10);
-                        ctx.fillRect(10, 10,sort[i].pourcentage*100, sort[i].pourcentage*10)
+                        ctx.fillRect(10, 10,sort[i].pourcentage*10, sort[i].pourcentage*10);
+                        ctx.fillRect(10, 10,sort[i].pourcentage, sort[i].pourcentage*10)
                         ctx.fillText(sort[i].pourcentage,10,10);
                         ctx.fillText(sort[i].name,50,10);
-                      
+                      document.getElementById('resultat').innerHTML += "<div class='col-md-4'><div class='card'><div class='card-body'><h5 class='card-title'>"+sort[i].name+"</h5><p class='card-text'>"+sort[i].pourcentage+"%</p></div></div></div>";
                         /*ctx.beginPath();
                         
                         ctx.arc(canvas.width/2, canvas.height/2, arr_all2[i]*100, 0, 2 * Math.PI);
