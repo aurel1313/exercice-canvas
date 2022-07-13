@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultats elections présidentielles</title>
+</head>
+<body>
+    <h1>Resultats elections présidentielles</h1>
+    
+    <div id="canvas">
+       
+    </div>
+   
+
+    <script>
+    
+     
+        const cumul =(total,num)=>{
+            return total+num;
+        };
+  
+       
+        
+        var datas = fetch('https://data.grandpoitiers.fr/api/records/1.0/search/?dataset=resultats_election_fichier_eirel_definitif&q=&rows=39&sort=pourcentage_1&facet=bureau_vote&facet=candidat_1&facet=candidat_2&facet=candidat_3&facet=candidat_4&facet=candidat_5&facet=candidat_6&facet=candidat_7&facet=candidat_8&facet=candidat_9&facet=candidat_10&facet=candidat_11&facet=candidat_12')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                let records,records2,records3,records4,records5,records6,records7,records8,records9,records10,records11,records12;
+
+                let candidat_1,candidat_2,candidat_3,candidat_4,candidat_5,candidat_6,candidat_7,candidat_8,candidat_9,candidat_10,candidat_11,candidat_12;
+               const arr =[];
+               const arr2=[];
+               const arr3=[];
+                const arr4=[];
+                const arr5=[];
+                const arr6=[];
+                const arr7=[];
+                const arr8=[];
+                const arr9=[];
+                const arr10=[];
+                const arr11=[];
+                const arr12=[];
+               let arr_all=[];
+               let arr_all2=[]
+               let arr_all3=[]
+
+                data.records.forEach(record => {
+                    
+                   records = record.fields.pourcentage_1;
+                   records2 = record.fields.pourcentage_2;
+                     records3 = record.fields.pourcentage_3;
+                        records4 = record.fields.pourcentage_4;
+                        records5 = record.fields.pourcentage_5;
+                        records6 = record.fields.pourcentage_6;
+                        records7 = record.fields.pourcentage_7;
+                        records8 = record.fields.pourcentage_8;
+                        records9 = record.fields.pourcentage_9;
+                        records10 = record.fields.pourcentage_10;
+                        records11 = record.fields.pourcentage_11;
+                        records12 = record.fields.pourcentage_12;
+                     candidat_1 = record.fields.candidat_1;
+                     candidat_2 = record.fields.candidat_2;
+                        candidat_3 = record.fields.candidat_3;
+                        candidat_4 = record.fields.candidat_4;
+                        candidat_5 = record.fields.candidat_5;
+                        candidat_6 = record.fields.candidat_6;
+                        candidat_7 = record.fields.candidat_7;
+                        candidat_8 = record.fields.candidat_8;
+                        candidat_9 = record.fields.candidat_9;
+                        candidat_10 = record.fields.candidat_10;
+                        candidat_11 = record.fields.candidat_11;
+                        candidat_12 = record.fields.candidat_12;
+                        arr.push(records);
+                         arr2.push(records2);
+                        arr3.push(records3);
+                        arr4.push(records4);
+                        arr5.push(records5);
+                        arr6.push(records6);
+                        arr7.push(records7);
+                        arr8.push(records8);
+                        arr9.push(records9);
+                        arr10.push(records10);
+                        arr11.push(records11);
+                        arr12.push(records12);
+                
+                });
+                
+                //console.log(arr2);
+                //console.log(candidat_1);
+               let initialValue=0;
+              let reduce = arr.reduce(cumul,initialValue);
+               let reduce2= arr2.reduce(cumul,initialValue);
+
+              let result_candidat_1 = reduce /39;
+               let around_candidat_1 = Math.round(result_candidat_1 * 100) / 100;
+               
+               let result_candidat_2 = reduce2 /39;
+                let around_candidat_2 = Math.round(result_candidat_2 * 100) / 100;
+
+                let reduce3 = arr3.reduce(cumul,initialValue);
+                let reduce4 = arr4.reduce(cumul,initialValue);
+                let reduce5 = arr5.reduce(cumul,initialValue);
+                let reduce6 = arr6.reduce(cumul,initialValue);
+                let reduce7 = arr7.reduce(cumul,initialValue);
+                let reduce8 = arr8.reduce(cumul,initialValue);
+                let reduce9 = arr9.reduce(cumul,initialValue);
+                let reduce10 = arr10.reduce(cumul,initialValue);
+                let reduce11 = arr11.reduce(cumul,initialValue);
+                let reduce12 = arr12.reduce(cumul,initialValue);
+               
+                
+                let result_candidat_3 = reduce3 /39;
+                let around_candidat_3 = Math.round(result_candidat_3 * 100) / 100;
+                let result_candidat_4 = reduce4 /39;
+                let around_candidat_4 = Math.round(result_candidat_4 * 100) / 100;
+                let result_candidat_5 = reduce5 /39;
+                let around_candidat_5 = Math.round(result_candidat_5 * 100) / 100;
+                let result_candidat_6 = reduce6 /39;
+                let around_candidat_6 = Math.round(result_candidat_6 * 100) / 100;
+                let result_candidat_7 = reduce7 /39;
+                let around_candidat_7 = Math.round(result_candidat_7 * 100) / 100;
+                let result_candidat_8 = reduce8 /39;
+                let around_candidat_8 = Math.round(result_candidat_8 * 100) / 100;
+                let result_candidat_9 = reduce9 /39;
+                let around_candidat_9 = Math.round(result_candidat_9 * 100) / 100;
+                let result_candidat_10 = reduce10 /39;
+                let around_candidat_10 = Math.round(result_candidat_10 * 100) / 100;
+                let result_candidat_11 = reduce11 /39;
+                let around_candidat_11 = Math.round(result_candidat_11 * 100) / 100;
+                let result_candidat_12 = reduce12 /39;
+                let around_candidat_12 = Math.round(result_candidat_12 * 100) / 100;
+                
+                const obj = [
+                   {
+                          name:candidat_1,
+                          pourcentage:around_candidat_1
+                     },
+                        {
+                            name:candidat_2,
+                            pourcentage:around_candidat_2
+                        },
+                        {
+                            name:candidat_3,
+                            pourcentage:around_candidat_3
+                        },
+                        {
+                            name:candidat_4,
+                            pourcentage:around_candidat_4
+                        },
+                        {
+                            name:candidat_5,
+                            pourcentage:around_candidat_5
+                        },
+                      {
+                            name:candidat_6,
+                            pourcentage:around_candidat_6
+                        },
+                        {
+                            name:candidat_7,
+                            pourcentage:around_candidat_7
+                        },
+                        {
+                            name:candidat_8,
+                            pourcentage:around_candidat_8
+                        },
+                       {
+                            name:candidat_9,
+                            pourcentage:around_candidat_9
+                        },
+                       {
+                            name:candidat_10,
+                            pourcentage:around_candidat_10
+                        },
+                        {
+                            name:candidat_11,
+                            pourcentage:around_candidat_11
+                        },
+                       {
+                            name:candidat_12,
+                            pourcentage:around_candidat_12
+                        }
+                    ]
+                    function sortDescending(array) {
+                         var done = false;
+                            while (!done) {
+                                done = true;
+                                for (var i = 1; i < array.length; i += 1) {
+                                     if (array[i - 1] > array[i]) {
+                                         done = false;
+                                        var tmp = array[i - 1];
+                                        array[i - 1] = array[i];
+                                        array[i] = tmp;
+                                    }
+                                }
+                            }
+
+                            return array;
+                    }
+                    function sortAscending(array) {
+                         var done = false;
+                            while (!done) {
+                                done = true;
+                                for (var i = 1; i < array.length; i += 1) {
+                                     if (array[i - 1] < array[i]) {
+                                         done = false;
+                                        var tmp = array[i - 1];
+                                        array[i - 1] = array[i];
+                                        array[i] = tmp;
+                                    }
+                                }
+                            }
+
+                            return array;
+                    }
+                    let sort;
+                    let sorting;
+                   obj.forEach(element => {
+                       //console.log(element.name,element.pourcentage);
+                       let sorting = [...obj];
+                          sorting.sort((a, b) => b.pourcentage - a.pourcentage);
+                           
+                            
+                          sort = sortDescending(sorting);
+                      
+                         return sort;
+                         
+                 
+
+                   });
+
+                console.log(sort);
+                  
+                
+                
+                    
+             
+               
+                    
+              
+                
+                
+                
+                arr_all.push(obj);
+                
+                arr_all2.push(around_candidat_1,around_candidat_2,around_candidat_3,around_candidat_4,around_candidat_5,around_candidat_6,around_candidat_7,around_candidat_8,around_candidat_9,around_candidat_10,around_candidat_11,around_candidat_12);
+               
+                arr_all3.push(candidat_1,candidat_2,candidat_3,candidat_4,candidat_5,candidat_6,candidat_7,candidat_8,candidat_9,candidat_10,candidat_11,candidat_12);
+                arr_all2.map(function(item){
+                  
+                  const sort = arr_all2.sort(function(a, b){return b-a});
+                    //console.log(sort);
+                }
+                );
+              
+                //console.log(arr_all2);
+             
+              
+                
+                
+                
+             
+            
+                //console.log(arr_all.sort(function(a, b){return b-a}));
+                //canvas.width = arr_all2[0]*100;
+                //canvas.height = arr_all2[0] *100;
+                //ctx.fillRect(0, 0,canvas.width, canvas.height);
+
+                console.log(sort.length);
+             
+                const canva = ()=>{
+                   
+                    for (let i = 0; i < sort.length; i++) {
+                        var element =document.createElement("canvas");
+                        var div = document.getElementById("canvas");
+                        div.appendChild(element);
+                        let id = "shapesCanvas"+i;
+                        let canvas = document.getElementsByTagName("canvas")[i];
+                       
+                        console.log(canvas);
+                        canvas.setAttribute("id",id);
+                        //canvas.setAttribute("width",sort[i].pourcentage*50);
+                        //canvas.setAttribute("height",sort[i].pourcentage*50);
+                       
+                       
+                        let ctx = canvas.getContext('2d');
+                        //ctx.fillRect(0, 0,sort[i]*100, sort[i]*100);
+                        ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+                        ctx.fillRect(10, 10,sort[i].pourcentage*100, sort[i].pourcentage*10);
+                        ctx.fillRect(10, 10,sort[i].pourcentage*100, sort[i].pourcentage*10)
+                        ctx.fillText(sort[i].pourcentage,10,10);
+                        ctx.fillText(sort[i].name,50,10);
+                      
+                        /*ctx.beginPath();
+                        
+                        ctx.arc(canvas.width/2, canvas.height/2, arr_all2[i]*100, 0, 2 * Math.PI);
+                        ctx.fillStyle = '#'+Math.floor(Math.random()*16777215).toString(16);
+                        ctx.fill();*/
+                    }
+                } 
+               canva()
+             
+               
+               
+            });
+
+           
+    </script>
+
+</body>
+</html>
